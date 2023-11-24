@@ -15,11 +15,13 @@
 }
 
 .ladder_climb {
-  background-color: greenyellow;
+  background-size: cover;
+  background-image: url("../ladder.png");
 }
 
 .snake_bite {
-  background-color: red;
+  background-size: cover;
+  background-image: url("../snake.png");
 }
 
 .current_position {
