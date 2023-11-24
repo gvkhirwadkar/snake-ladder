@@ -1,0 +1,27 @@
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(62, 58, 57);
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.marker {
+  font-size: xxx-large;
+  position: absolute;
+}
+
+.ladder_climb {
+  background-color: greenyellow;
+}
+
+.snake_bite {
+  background-color: red;
+}
+
+.current_position {
+  background-color: cadetblue;
+}

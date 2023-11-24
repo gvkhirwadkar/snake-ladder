@@ -1,0 +1,11 @@
+.dice {
+  width: 100px;
+  height: 100px;
+  background-color: #d1c4c4;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  font-weight: bold;
+}
