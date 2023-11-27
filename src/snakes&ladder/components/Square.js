@@ -1,9 +1,9 @@
 import "./Square.css";
 
-const Square = ({ squareLabel, squareClass }) => {
+const Square = ({ children, squareClass }) => {
   return (
     <div className={squareClass}>
-      <span className="marker">{squareLabel}</span>
+      <span className="marker">{children}</span>
     </div>
   );
 };

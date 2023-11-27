@@ -27,3 +27,9 @@
 .current_position {
   background-color: cadetblue;
 }
+
+.tooltip {
+  background: rgb(151 187 217);
+  font-weight: bold;
+  text-wrap: wrap;
+}
