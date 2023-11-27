@@ -26,11 +26,11 @@ const getTooltipText = (squareIndex) => {
   const snakeBiteEnd = SNAKE_BITES[squareIndex];
   const ladderEnd = LADDER_CLIMBS[squareIndex];
   if (snakeBiteEnd) {
-    return `Ouchhh Snake bite! You will end up at ${snakeBiteEnd}`;
+    return `You will end up at ${snakeBiteEnd}`;
   }
 
   if (ladderEnd) {
-    return `Wow Ladder! It will take you up at ${ladderEnd}`;
+    return `It will take you up at ${ladderEnd}`;
   }
 };
 
