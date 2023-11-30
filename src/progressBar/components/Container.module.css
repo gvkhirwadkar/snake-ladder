@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reloadButton {
+  background-color: slategray;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 2rem;
+  width: 5rem;
+  box-shadow: 0px 0px 15px 0px #00000096;
+}
+
+.reloadButton:disabled {
+  cursor: not-allowed;
+}

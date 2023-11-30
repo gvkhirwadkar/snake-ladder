@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Container.css";
+import styles from "./Container.module.css";
 import { SNAKE_BITES, LADDER_CLIMBS } from "../Config";
 import Dice from "./Dice";
 import Board from "./Board";
@@ -53,7 +53,7 @@ const Container = () => {
         <button onClick={rollDice}>Roll</button>
         <Dice number={diceNumber} />
       </div>
-      <div className="container">
+      <div className={styles.container}>
         <Board markerPosition={markerPosition} />
       </div>
     </>

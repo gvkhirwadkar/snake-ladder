@@ -1,22 +1,23 @@
 import { useState } from "react";
 import { LADDER_CLIMBS, SNAKE_BITES } from "../Config";
+import styles from "./Square.module.css";
 import Square from "./Square";
 
 const getSquareClass = (squareIndex, currentPosition) => {
-  let squareClass = "square";
+  let squareClass = styles.square;
   const snakeBiteEnd = SNAKE_BITES[squareIndex];
   const stairClimbEnd = LADDER_CLIMBS[squareIndex];
 
   if (currentPosition) {
-    squareClass = squareClass.concat(" current_position");
+    squareClass = squareClass.concat(" " + styles.current_position);
   }
 
   if (snakeBiteEnd) {
-    squareClass = squareClass.concat(" snake_bite");
+    squareClass = squareClass.concat(" " + styles.snake_bite);
   }
 
   if (stairClimbEnd) {
-    squareClass = squareClass.concat(" ladder_climb");
+    squareClass = squareClass.concat(" " + styles.ladder_climb);
   }
 
   return squareClass;
@@ -26,11 +27,11 @@ const getTooltipText = (squareIndex) => {
   const snakeBiteEnd = SNAKE_BITES[squareIndex];
   const ladderEnd = LADDER_CLIMBS[squareIndex];
   if (snakeBiteEnd) {
-    return `You will end up at ${snakeBiteEnd}`;
+    return `Go to ${snakeBiteEnd}`;
   }
 
   if (ladderEnd) {
-    return `It will take you up at ${ladderEnd}`;
+    return `Go to ${ladderEnd}`;
   }
 };
 
@@ -45,7 +46,9 @@ const WithTooltip = (Component, tooltipText = "") => {
         onMouseLeave={() => setShowTooltip(false)}
       >
         {tooltipText && showTooltip ? (
-          <label className="square tooltip">{tooltipText}</label>
+          <label className={`${styles.square} ${styles.tooltip}`}>
+            {tooltipText}
+          </label>
         ) : (
           <Component {...restProps}>{children}</Component>
         )}
@@ -57,7 +60,12 @@ const WithTooltip = (Component, tooltipText = "") => {
 const Row = ({ columns, rowIndex, markerPosition }) => {
   return Array.from({ length: columns }, (_, k) => {
     const squareIndex = columns * rowIndex + k + 1;
-    const squareLabel = squareIndex === markerPosition ? "X" : squareIndex;
+    const squareLabel =
+      squareIndex === markerPosition ? (
+        <div className={styles.userPosition}></div>
+      ) : (
+        squareIndex
+      );
     const squareClass = getSquareClass(
       squareIndex,
       squareIndex === markerPosition

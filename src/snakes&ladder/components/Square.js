@@ -1,9 +1,9 @@
-import "./Square.css";
+import styles from "./Square.module.css";
 
 const Square = ({ children, squareClass }) => {
   return (
     <div className={squareClass}>
-      <span className="marker">{children}</span>
+      <span className={styles.marker}>{children}</span>
     </div>
   );
 };

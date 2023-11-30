@@ -1,6 +1,6 @@
 .square {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   background-color: rgb(62, 58, 57);
   border: 1px solid black;
   display: flex;
@@ -10,8 +10,9 @@
 }
 
 .marker {
-  font-size: xxx-large;
+  font-size: x-large;
   position: absolute;
+  color: white;
 }
 
 .ladder_climb {
@@ -32,4 +33,11 @@
   background: rgb(151 187 217);
   font-weight: bold;
   text-wrap: wrap;
+}
+
+.userPosition {
+  width: 20px;
+  height: 20px;
+  background: #1e248b;
+  border-radius: 50%;
 }
