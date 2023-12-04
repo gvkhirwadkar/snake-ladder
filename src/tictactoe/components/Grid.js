@@ -32,6 +32,7 @@ function Grid() {
   };
 
   const resetGame = () => {
+    setPlayer("X");
     setMarkerPositions(BLANK_ARRAY);
     setTurns(0);
   };
