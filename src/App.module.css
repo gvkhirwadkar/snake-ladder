@@ -1,0 +1,9 @@
+.App {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.App hr {
+  width: 35rem;
+}

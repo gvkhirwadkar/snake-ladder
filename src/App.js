@@ -1,12 +1,15 @@
 import { useState } from "react";
 import SnakeAndLadder from "./snakes&ladder/components/Container";
 import ProgressBar from "./progressBar/components/Container";
+import TicTacToe from "./tictactoe/components/Container";
+import styles from "./App.module.css";
 
 import "./index.css";
 
 const GAME_MAPPER = {
   SNL: { renderer: <SnakeAndLadder />, isImplemented: true },
   PB: { renderer: <ProgressBar />, isImplemented: true },
+  TTT: { renderer: <TicTacToe />, isImplemented: true },
 };
 
 export default function App() {
@@ -17,7 +20,7 @@ export default function App() {
   };
 
   return (
-    <>
+    <div className={styles.App}>
       <div className="game-options" onClick={handleClick}>
         <button disabled={!GAME_MAPPER.SNL?.isImplemented} value="SNL">
           Snake and Ladder
@@ -29,7 +32,8 @@ export default function App() {
           TicTaeToe
         </button>
       </div>
+      <hr />
       {GAME_MAPPER[game]?.renderer}
-    </>
+    </div>
   );
 }

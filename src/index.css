@@ -15,3 +15,9 @@ body {
   height: 2rem;
   cursor: pointer;
 }
+
+.main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
