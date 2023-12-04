@@ -1,19 +1,22 @@
-.progress-bar {
+.progressBar {
   border: 2px solid grey;
-  height: 1.5rem;
+  height: 15rem;
   width: 20rem;
   border-radius: 15px;
   overflow: hidden;
   position: relative;
 }
 
-.progress-fill {
+.progressBar div {
+}
+
+.progressFill {
   background-color: #60d539;
   height: 100%;
   transition: all 0.1s ease-out;
 }
 
-.progress-value {
+.progressValue {
   position: absolute;
   z-index: 2;
   display: flex;
