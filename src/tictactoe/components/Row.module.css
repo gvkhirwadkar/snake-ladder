@@ -2,10 +2,12 @@
   display: flex;
 }
 
-.row:nth-of-type(n) {
+.row:first-child div {
   border-top: none;
+  border-bottom: none;
 }
 
-.row:nth-of-type(3n) {
+.row:last-child div {
   border-bottom: none;
+  border-top: none;
 }
