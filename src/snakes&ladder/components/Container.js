@@ -50,10 +50,12 @@ const Container = () => {
   return (
     <>
       <div>
-        <button onClick={rollDice}>Roll</button>
-        <Dice number={diceNumber} />
-      </div>
-      <div className={styles.container}>
+        <div className={styles.gameControls}>
+          <button className={styles.rollDiceButton} onClick={rollDice}>
+            Roll
+          </button>
+          <Dice number={diceNumber} />
+        </div>
         <Board markerPosition={markerPosition} />
       </div>
     </>

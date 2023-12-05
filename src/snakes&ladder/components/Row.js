@@ -2,6 +2,7 @@ import { useState } from "react";
 import { LADDER_CLIMBS, SNAKE_BITES } from "../Config";
 import styles from "./Square.module.css";
 import Square from "./Square";
+import rowStyles from "./Row.module.css";
 
 const getSquareClass = (squareIndex, currentPosition) => {
   let squareClass = styles.square;
@@ -58,28 +59,36 @@ const WithTooltip = (Component, tooltipText = "") => {
 };
 
 const Row = ({ columns, rowIndex, markerPosition }) => {
-  return Array.from({ length: columns }, (_, k) => {
-    const squareIndex = columns * rowIndex + k + 1;
-    const squareLabel =
-      squareIndex === markerPosition ? (
-        <div className={styles.userPosition}></div>
-      ) : (
-        squareIndex
-      );
-    const squareClass = getSquareClass(
-      squareIndex,
-      squareIndex === markerPosition
-    );
-    const tooltipText = getTooltipText(squareIndex);
+  const isOddRow = rowIndex % 2 === 0;
+  const rowClassName = isOddRow
+    ? rowStyles.boardRow
+    : rowStyles.boardRowReverse;
+  return (
+    <div className={rowClassName} key={rowIndex}>
+      {Array.from({ length: columns }, (_, k) => {
+        const squareIndex = columns * rowIndex + k + 1;
+        const squareLabel =
+          squareIndex === markerPosition ? (
+            <div className={styles.userPosition}></div>
+          ) : (
+            squareIndex
+          );
+        const squareClass = getSquareClass(
+          squareIndex,
+          squareIndex === markerPosition
+        );
+        const tooltipText = getTooltipText(squareIndex);
 
-    const SquareWithToolTip = WithTooltip(Square, tooltipText);
+        const SquareWithToolTip = WithTooltip(Square, tooltipText);
 
-    return (
-      <SquareWithToolTip key={squareLabel} squareClass={squareClass}>
-        {squareLabel}
-      </SquareWithToolTip>
-    );
-  });
+        return (
+          <SquareWithToolTip key={squareLabel} squareClass={squareClass}>
+            {squareLabel}
+          </SquareWithToolTip>
+        );
+      })}
+    </div>
+  );
 };
 
 export default Row;

@@ -1,0 +1,13 @@
+.row {
+  display: flex;
+}
+
+.row:first-child div {
+  border-top: none;
+  border-bottom: none;
+}
+
+.row:last-child div {
+  border-bottom: none;
+  border-top: none;
+}

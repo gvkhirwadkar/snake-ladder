@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "./ProgressBar.css";
+import styles from "./ProgressBar.module.css";
 import { MAX } from "../Config";
 
 const getProgressValueStyle = (value) => {
@@ -20,11 +20,17 @@ const ProgressBar = ({ value = 0, onEnd = () => {}, onStart = () => {} }) => {
   }, [value, onEnd]);
 
   return (
-    <div className="progress-bar">
-      <span className="progress-value" style={getProgressValueStyle(value)}>
+    <div className={styles.progressBar}>
+      <span
+        className={styles.progressValue}
+        style={getProgressValueStyle(value)}
+      >
         {value.toFixed()}%
       </span>
-      <div className="progress-fill" style={getProgressFillStyle(value)}></div>
+      <div
+        className={styles.progressFill}
+        style={getProgressFillStyle(value)}
+      ></div>
     </div>
   );
 };

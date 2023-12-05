@@ -1,9 +1,4 @@
-.boardRow {
+.board {
   display: flex;
-}
-
-.boardRowReverse {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
+  flex-direction: column-reverse;
 }
