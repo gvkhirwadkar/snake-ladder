@@ -3,12 +3,14 @@ import { ROWS, WINNING_INDICES } from "../Config";
 import Row from "./Row";
 
 const BLANK_ARRAY = Array.from({ length: 9 });
+const DEFAULT_PLAYER = "X";
 
 function Grid() {
-  const [player, setPlayer] = useState("X");
+  const [player, setPlayer] = useState(DEFAULT_PLAYER);
   const [turns, setTurns] = useState(0);
   const [isWon, setIsWon] = useState(false);
   const [isDraw, setIsDraw] = useState(false);
+  const [winner, setWinner] = useState("");
   const [markerPositions, setMarkerPositions] = useState(BLANK_ARRAY);
   const rows = [];
 
@@ -19,26 +21,23 @@ function Grid() {
     setTurns(newTurns);
   };
 
-  const handleSquareClick = (e) => {
-    const clickIndex = e.target.getAttribute("index");
-    if (!markerPositions[clickIndex]) {
-      const newMarkerPositions = [...markerPositions];
-      newMarkerPositions[clickIndex] = player;
-      setMarkerPositions(newMarkerPositions);
-      setData();
-    } else {
-      return;
-    }
-  };
-
   const resetGame = () => {
-    setPlayer("X");
+    setPlayer(DEFAULT_PLAYER);
     setMarkerPositions(BLANK_ARRAY);
     setTurns(0);
+    setIsWon(false);
+    setIsDraw(false);
   };
 
-  useEffect(() => {
-    if (turns > 4) {
+  const calculateWinner = (markerPositions = []) => {
+    let verdict = {
+      isWon: false,
+      isDraw: false,
+      winner: "",
+    };
+
+    // Calculate winning only when turns more than 4
+    if (turns >= 4) {
       WINNING_INDICES.forEach((options) => {
         const [i, j, k] = options;
         if (markerPositions[i] && markerPositions[j] && markerPositions[k]) {
@@ -46,27 +45,54 @@ function Grid() {
             markerPositions[i] === markerPositions[j] &&
             markerPositions[j] === markerPositions[k]
           ) {
-            setIsWon(true);
+            verdict = {
+              ...verdict,
+              isWon: true,
+              winner: markerPositions[i],
+            };
+          } else if (markerPositions.indexOf(undefined) < 0) {
+            verdict = {
+              ...verdict,
+              isDraw: true,
+            };
           }
         }
       });
     }
-    if (turns > 8) {
-      setIsDraw(true);
+
+    return verdict;
+  };
+
+  const handleSquareClick = (e) => {
+    const clickIndex = e.target.getAttribute("index");
+    if (!markerPositions[clickIndex]) {
+      const newMarkerPositions = [...markerPositions];
+      newMarkerPositions[clickIndex] = player;
+      const { isWon, isDraw, winner } = calculateWinner(newMarkerPositions);
+      if (isWon) {
+        setIsWon(true);
+        setWinner(winner);
+      } else if (isDraw) {
+        setIsDraw(true);
+      }
+
+      setData();
+      setMarkerPositions(newMarkerPositions);
+    } else {
+      return;
     }
-  }, [player, isWon, turns, markerPositions]);
+  };
 
   useEffect(() => {
     let id;
-    if (isWon) {
-      resetGame();
+    if (isWon || isDraw) {
       id = setTimeout(() => {
-        setIsWon(false);
+        resetGame();
       }, 2000);
     }
 
     return () => clearTimeout(id);
-  }, [isWon]);
+  }, [isWon, isDraw]);
 
   for (let index = 0; index < ROWS; index++) {
     rows.push(
@@ -81,7 +107,7 @@ function Grid() {
 
   return (
     <>
-      {isWon && <span>User {player} won</span>}
+      {isWon && <span>User {winner} won</span>}
       {isDraw && <span>Draw</span>}
       {!isWon && <div>{rows}</div>}
     </>

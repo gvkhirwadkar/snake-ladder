@@ -49,7 +49,7 @@ const Container = () => {
 
   return (
     <>
-      <div>
+      <div className={styles.container}>
         <div className={styles.gameControls}>
           <button className={styles.rollDiceButton} onClick={rollDice}>
             Roll
