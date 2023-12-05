@@ -4,12 +4,12 @@ import { MAX } from "../Config";
 
 const getProgressValueStyle = (value) => {
   return {
-    color: value > 49 ? "white" : "black",
+    color: value > MAX / 2 - 1 ? "white" : "black",
   };
 };
 
 const getProgressFillStyle = (value) => {
-  return { transform: `scaleX(${value / 100})`, transformOrigin: "left" };
+  return { transform: `scaleX(${value / MAX})`, transformOrigin: "left" };
 };
 
 const ProgressBar = ({ value = 0, onEnd = () => {}, onStart = () => {} }) => {

@@ -12,14 +12,16 @@ function useProgress() {
 
   useEffect(() => {
     const id = setInterval(() => {
-      setValue((prevValue) => {
-        const newValue = getValue(prevValue);
-        return newValue + 1;
-      });
+      if (value < MAX) {
+        setValue((prevValue) => {
+          // React gives me this value not the Component
+          return getValue(prevValue) + 1;
+        });
+      }
     }, 100);
 
     return () => clearInterval(id);
-  }, [value]);
+  }, []);
 
   return { value, setValue };
 }
