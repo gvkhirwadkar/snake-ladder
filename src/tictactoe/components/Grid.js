@@ -38,26 +38,28 @@ function Grid() {
 
     // Calculate winning only when turns more than 4
     if (turns >= 4) {
-      WINNING_INDICES.forEach((options) => {
-        const [i, j, k] = options;
+      for (let index = 0; index < WINNING_INDICES.length; index++) {
+        const [i, j, k] = WINNING_INDICES[index];
         if (markerPositions[i] && markerPositions[j] && markerPositions[k]) {
           if (
             markerPositions[i] === markerPositions[j] &&
             markerPositions[j] === markerPositions[k]
           ) {
-            verdict = {
+            return {
               ...verdict,
               isWon: true,
               winner: markerPositions[i],
             };
-          } else if (markerPositions.indexOf(undefined) < 0) {
-            verdict = {
-              ...verdict,
-              isDraw: true,
-            };
           }
         }
-      });
+      }
+    }
+
+    if (markerPositions.indexOf(undefined) < 0) {
+      return {
+        ...verdict,
+        isDraw: true,
+      };
     }
 
     return verdict;
@@ -72,7 +74,8 @@ function Grid() {
       if (isWon) {
         setIsWon(true);
         setWinner(winner);
-      } else if (isDraw) {
+      }
+      if (isDraw) {
         setIsDraw(true);
       }
 
@@ -109,7 +112,7 @@ function Grid() {
     <>
       {isWon && <span>User {winner} won</span>}
       {isDraw && <span>Draw</span>}
-      {!isWon && <div>{rows}</div>}
+      {<div>{rows}</div>}
     </>
   );
 }

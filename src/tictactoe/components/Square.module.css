@@ -7,7 +7,9 @@
   cursor: pointer;
   border: 3px solid grey;
   cursor: pointer;
-  font-size: xx-large;
+  font-size: 5rem;
+  border-width: 10px;
+  font-weight: bolder;
 }
 
 .square:nth-of-type(3n) {

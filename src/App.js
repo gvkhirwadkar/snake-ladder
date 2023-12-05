@@ -29,7 +29,7 @@ export default function App() {
           ProgressBar
         </button>
         <button disabled={!GAME_MAPPER.TTT?.isImplemented} value="TTT">
-          TicTaeToe
+          TicTacToe
         </button>
       </div>
       <hr />
