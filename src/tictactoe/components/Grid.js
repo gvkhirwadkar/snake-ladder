@@ -5,7 +5,7 @@ import Row from "./Row";
 const BLANK_ARRAY = Array.from({ length: 9 });
 const DEFAULT_PLAYER = "X";
 
-function Grid() {
+function Grid({ setScore }) {
   const [player, setPlayer] = useState(DEFAULT_PLAYER);
   const [turns, setTurns] = useState(0);
   const [isWon, setIsWon] = useState(false);
@@ -74,6 +74,7 @@ function Grid() {
       if (isWon) {
         setIsWon(true);
         setWinner(winner);
+        setScore(winner);
       }
       if (isDraw) {
         setIsDraw(true);

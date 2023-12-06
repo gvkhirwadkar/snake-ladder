@@ -21,7 +21,7 @@ function useProgress() {
     }, 100);
 
     return () => clearInterval(id);
-  }, []);
+  }, [value]);
 
   return { value, setValue };
 }
