@@ -1,0 +1,15 @@
+.button {
+  width: 5rem;
+  height: 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.primary {
+  background-color: #0db1e8;
+}
+
+.secondary {
+  background-color: #e80d14;
+}

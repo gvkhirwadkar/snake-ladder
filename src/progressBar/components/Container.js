@@ -2,6 +2,7 @@ import ProgressBar from "./ProgressBar";
 import useProgress from "../useProgress";
 import { useCallback, useState } from "react";
 import styles from "./Container.module.css";
+import Button from "../../button/Button";
 
 function ProgressBarContainer() {
   const [isCompleted, setIsCompleted] = useState(false);
@@ -17,13 +18,7 @@ function ProgressBarContainer() {
 
   return (
     <div className={styles.container}>
-      <button
-        disabled={!isCompleted}
-        className={styles.reloadButton}
-        onClick={reload}
-      >
-        Reload
-      </button>
+      <Button disabled={!isCompleted} onClick={reload} label="Reload"></Button>
       <ProgressBar value={progressValue} onEnd={onEnd} />
       {isCompleted ? <span>Completed</span> : <span>Loading</span>}
     </div>

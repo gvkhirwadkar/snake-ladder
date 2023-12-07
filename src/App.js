@@ -1,16 +1,7 @@
 import { useState } from "react";
-import SnakeAndLadder from "./snakes&ladder/components/Container";
-import ProgressBar from "./progressBar/components/Container";
-import TicTacToe from "./tictactoe/components/Container";
 import styles from "./App.module.css";
-
 import "./index.css";
-
-const GAME_MAPPER = {
-  SNL: { renderer: <SnakeAndLadder />, isImplemented: true },
-  PB: { renderer: <ProgressBar />, isImplemented: true },
-  TTT: { renderer: <TicTacToe />, isImplemented: true },
-};
+import { GAME_MAPPER } from "./Config";
 
 export default function App() {
   const [game, setGame] = useState("SNL");
@@ -19,21 +10,23 @@ export default function App() {
     setGame(e.target.value);
   };
 
+  const displayGame = () => {
+    return GAME_MAPPER.find((v, i) => v.id === game).renderer;
+  };
+
   return (
     <div className={styles.App}>
       <div className="game-options" onClick={handleClick}>
-        <button disabled={!GAME_MAPPER.SNL?.isImplemented} value="SNL">
-          Snake and Ladder
-        </button>
-        <button disabled={!GAME_MAPPER.PB?.isImplemented} value="PB">
-          ProgressBar
-        </button>
-        <button disabled={!GAME_MAPPER.TTT?.isImplemented} value="TTT">
-          TicTacToe
-        </button>
+        {GAME_MAPPER.map((v) => {
+          return (
+            <button key={v.id} disabled={!v.isImplemented} value={v.id}>
+              {v.label}
+            </button>
+          );
+        })}
       </div>
       <hr />
-      {GAME_MAPPER[game]?.renderer}
+      {displayGame()}
     </div>
   );
 }

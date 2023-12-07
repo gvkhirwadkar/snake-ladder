@@ -3,6 +3,7 @@ import styles from "./Container.module.css";
 import { SNAKE_BITES, LADDER_CLIMBS } from "../Config";
 import Dice from "./Dice";
 import Board from "./Board";
+import Button from "../../button/Button";
 
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -51,9 +52,7 @@ const Container = () => {
     <>
       <div className={styles.container}>
         <div className={styles.gameControls}>
-          <button className={styles.rollDiceButton} onClick={rollDice}>
-            Roll
-          </button>
+          <Button onClick={rollDice} label="Roll" />
           <Dice number={diceNumber} />
         </div>
         <Board markerPosition={markerPosition} />
