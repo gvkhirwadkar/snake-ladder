@@ -8,9 +8,15 @@
   padding: 10px;
   align-items: center;
   display: flex;
-  height: 2.5rem;
   justify-content: space-between;
   background-color: lightgrey;
+  font-size: larger;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+.header:hover {
+  opacity: 1;
 }
 
 .expandButton {

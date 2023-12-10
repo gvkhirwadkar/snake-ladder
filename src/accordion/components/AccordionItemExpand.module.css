@@ -1,3 +1,13 @@
+.section {
+  background: #808080de;
+  transition: height 0.25s ease-in-out;
+  padding: 0px 10px;
+}
+
+.collapsedSection {
+  height: 0px;
+}
+
 .expandedSection {
-  padding: 10px;
+  height: 150px;
 }
