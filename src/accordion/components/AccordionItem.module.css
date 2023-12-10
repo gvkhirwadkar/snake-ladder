@@ -1,0 +1,23 @@
+.item {
+  border: 1px solid lightslategrey;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.header {
+  padding: 10px;
+  align-items: center;
+  display: flex;
+  height: 2.5rem;
+  justify-content: space-between;
+  background-color: lightgrey;
+}
+
+.expandButton {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 5px;
+  background: darkgrey;
+  height: 2.5rem;
+}

@@ -26,7 +26,7 @@ function getMarkerPosition(oldMarkerPosition, randomNumber) {
   return markerPosition;
 }
 
-const Container = () => {
+const SnakeAndLadderContainer = () => {
   const [diceNumber, setDiceNumber] = useState(1);
   const [markerPosition, setMarkerPosition] = useState(1);
 
@@ -61,4 +61,4 @@ const Container = () => {
   );
 };
 
-export default Container;
+export default SnakeAndLadderContainer;

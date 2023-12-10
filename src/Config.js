@@ -2,7 +2,8 @@ import React from "react";
 import SnakeAndLadder from "./snakes&ladder/components/Container";
 import ProgressBar from "./progressBar/components/Container";
 import TicTacToe from "./tictactoe/components/Container";
-import ModalContainer from "./modal/components/Container";
+import Modal from "./modal/components/Container";
+import Accordion from "./accordion/components/Container";
 
 export default function NotImplemented() {
   return <div>NotImplemented</div>;
@@ -31,7 +32,13 @@ const GAME_MAPPER = [
     isImplemented: true,
     id: "MODAL",
     label: "Modal",
-    renderer: <ModalContainer />,
+    renderer: <Modal />,
+  },
+  {
+    isImplemented: true,
+    id: "ACC",
+    label: "Accordion",
+    renderer: <Accordion />,
   },
 ];
 
